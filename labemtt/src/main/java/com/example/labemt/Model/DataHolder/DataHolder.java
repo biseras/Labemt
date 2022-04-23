@@ -36,13 +36,22 @@ public class DataHolder {
         countryRepository.save(country1);
         Country country=new Country("Germanija", "Evropa");
         countryRepository.save(country);
+        Country country2=new Country("Francija", "Evropa");
         Avtor avtor=new Avtor("slavko", "janevski", country1);
         avtorRepository.save(avtor);
         Avtor avtor1=new Avtor("johan", "gete", country);
+        Avtor avtor2=new Avtor("zil", "vern", country2);
+        Avtor avtor3=new Avtor("gorjan", "Petrevski", country1);
         avtorRepository.save(avtor);
         avtorRepository.save(avtor1);
+        avtorRepository.save(avtor2);
+        avtorRepository.save(avtor3);
         Kniga kniga=new Kniga("verter", Category.NOVEL, avtor1, 12 );
         knigaRepository.save(kniga);
+        Kniga kniga2=new Kniga("Patot okolu svetot za 80 dena", Category.DRAMA, avtor2, 12 );
+        knigaRepository.save(kniga2);
+        Kniga kniga4=new Kniga("Marta", Category.DRAMA, avtor3, 12 );
+        knigaRepository.save(kniga4);
         Kniga kniga1=new Kniga("crni i zolti", Category.NOVEL, avtor, 12 );
         knigaRepository.save(kniga1);
 
