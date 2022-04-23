@@ -1,0 +1,50 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">WEB PROGRAMMING SHOP</h1>
+            <h3 class="jumbotron-heading">All products</h3>
+        </div>
+    </section>
+
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12" th:if="${avtor.size() > 0}">
+                <ol class="list-group list-group-numbered" th:each="avtor : ${avtor}">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="font-weight-bold" th:text="${avtor.getName()}"></div>
+                            <div class="font-weight-bold" th:text="${avtor.getSurname()}"></div>
+                            <div class="fw-bold" th:text="${avtor.getCountry()}"></div>
+                        </div>
+                        <span>
+                              <th:block>
+                                    <a th:href="@{'/avtor/edit-form/{id}' (id=${avtor.getId()})}"
+                                       class="btn btn-sm btn-info edit-product">
+                                        <i class="fa fa-trash">Edit</i>
+                                    </a>
+                                </th:block>
+                              <th:block>
+                                    <form th:action="@{'/avtor/delete/{id}' (id=${avtor.getId()})}"
+                                          th:method="DELETE">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-danger delete-product">
+                                            <i class="fa fa-trash">Delete</i>
+                                        </button>
+                                    </form>
+                                </th:block>
+                          </span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-3">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <a href="/avtor/add-form" class="btn btn-block btn-dark add-product-btn">
+                    Add new avtor
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

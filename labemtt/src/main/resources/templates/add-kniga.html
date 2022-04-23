@@ -1,0 +1,61 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Kniga</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/kniga/add" method="POST">
+                    <input id="id" type="hidden" name="id" th:value="(${kniga} != null ? ${kniga.getId()} : '')">
+                    <div class="form-group">
+                        <label for="name">Ime</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="name"
+                               th:value="(${kniga} != null ? ${kniga.getName()} : '')"
+                               required
+                               placeholder="Enter product name">
+                    </div>
+
+                    <div>
+                        <label>Kategorija</label><br/>
+                        <select id="category" name="category">
+                            <!-- For each type you should have one <option> like below  -->
+                            <option value="novel">Novel</option>
+                            <option value="thriler">Thriler</option>
+                            <option value="history">history</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="biography">Biography</option>
+                            <option value="classics">Classiscs</option>
+                            <option value="drama">Drama</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Avtor</label><br/>
+                        <select id="avtor" name="avtor"  multiple>
+                            <!-- For each course you should have one <option> like below  -->
+                            <option th:each="avtor:${avtor}" th:value="${avtor.id}" th:text="${avtor.name}"> [avtor.name]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="availablecopies">Quantity</label>
+                        <input type="text"
+                               class="form-control"
+                               id="availablecopies"
+                               name="availablecopies"
+                               th:value="(${kniga} != null ? ${kniga.getAvailablecopies()} : '')"
+                               placeholder="Quantity">
+                    </div>
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                    <a type="button" class="btn btn-primary" href="/kniga">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</th:block>
